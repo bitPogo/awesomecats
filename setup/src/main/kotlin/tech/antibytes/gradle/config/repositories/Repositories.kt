@@ -14,21 +14,22 @@ private val githubGroups = listOf(
     "tech.antibytes.kfixture",
     "tech.antibytes.test-utils-kmp",
     "tech.antibytes.kmock",
+    "com.michael-bull.kotlin-result",
 )
 
 object Repositories {
     val pixabayRepositories = listOf(
         AntibytesRepository(
             AntibytesUrl.DEV,
-            tech.antibytes.gradle.config.repositories.githubGroups,
+            githubGroups,
         ),
         AntibytesRepository(
             AntibytesUrl.SNAPSHOT,
-            tech.antibytes.gradle.config.repositories.githubGroups,
+            githubGroups,
         ),
         AntibytesRepository(
             AntibytesUrl.ROLLING,
-            tech.antibytes.gradle.config.repositories.githubGroups,
+            githubGroups,
         ),
     )
 }

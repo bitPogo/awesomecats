@@ -8,10 +8,10 @@ import tech.antibytes.gradle.configuration.runtime.AntiBytesTestConfigurationTas
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import tech.antibytes.gradle.config.publishing.AwesomeCatsSDKConfiguration
+import tech.antibytes.gradle.configuration.apple.ensureAppleDeviceCompatibility
 import tech.antibytes.gradle.configuration.sourcesets.setupAndroidTest
 import java.util.Properties
-import tech.antibytes.gradle.configuration.sourcesets.nativeCoroutine
-import tech.antibytes.gradle.configuration.apple.ensureAppleDeviceCompatibility
+import tech.antibytes.gradle.configuration.sourcesets.appleWithLegacy
 
 plugins {
     alias(antibytesCatalog.plugins.gradle.antibytes.kmpConfiguration)
@@ -61,9 +61,9 @@ kotlin {
         }
     }
 
-    macosX64()
-    macosArm64()
+    appleWithLegacy()
     linuxX64()
+    ensureAppleDeviceCompatibility()
 
     sourceSets {
         all {
@@ -83,7 +83,7 @@ kotlin {
                 implementation(antibytesCatalog.common.ktor.client.logging)
                 implementation(antibytesCatalog.common.ktor.client.contentNegotiation)
                 implementation(antibytesCatalog.common.ktor.client.json)
-                implementation(antibytesCatalog.jvm.ktor.serialization.json)
+                implementation(antibytesCatalog.common.ktor.serialization.json)
 
                 implementation(antibytesCatalog.common.kotlinx.serialization.core)
                 implementation(antibytesCatalog.common.kotlinx.serialization.json)
@@ -153,22 +153,16 @@ kotlin {
             }
         }
 
-        val nativeMain by creating {
+        val appleMain by getting {
             dependencies {
                 implementation(antibytesCatalog.common.ktor.client.cio)
             }
         }
 
-        val macosX64Main by getting {
-            dependsOn(nativeMain)
-        }
-
-        val macosArm64Main by getting {
-            dependsOn(nativeMain)
-        }
-
         val linuxX64Main by getting {
-            dependsOn(nativeMain)
+            dependencies {
+                implementation(antibytesCatalog.common.ktor.client.cio)
+            }
         }
     }
 }
