@@ -32,7 +32,7 @@ class HttpErrorMapperSpec {
 
     @Test
     @JsName("fn1")
-    fun `Given mapAndThrow is called with a Throwable, it rethrows non ResponseException`() {
+    fun `Given mapAndThrow is called with a Throwable it rethrows non ResponseException`() {
         // Given
         val throwable = RuntimeException("abc")
 
@@ -48,7 +48,7 @@ class HttpErrorMapperSpec {
 
     @Test
     @JsName("fn2")
-    fun `Given mapAndThrow is called with a Throwable, it rethrows it as RequestError, which contains a HttpStatusCode`() = runBlockingTest {
+    fun `Given mapAndThrow is called with a Throwable it rethrows it as RequestError which contains a HttpStatusCode`() = runBlockingTest {
         // Given
         val client = HttpClient(MockEngine) {
             expectSuccess = true

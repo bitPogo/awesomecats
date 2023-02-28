@@ -36,7 +36,7 @@ class ResponseValidatorConfiguratorSpec {
 
     @Test
     @JsName("fn1")
-    fun `Given configure is called  with a Pair of Validators, it configures a ErrorPropagator if it is not null`() = runBlockingTest {
+    fun `Given configure is called  with a Pair of Validators it configures a ErrorPropagator if it is not null`() = runBlockingTest {
         // Given
         val propagator: ErrorMapperMock = kmock()
 

@@ -29,7 +29,7 @@ class LoggingConfiguratorSpec {
 
     @Test
     @JsName("fn1")
-    fun `Given configure is called with a LoggingConfig, it sets it up and just runs`() {
+    fun `Given configure is called with a LoggingConfig it sets it up and just runs`() {
         // Given
         val config = Logging.Config()
         val logger: LoggerMock = kmock()

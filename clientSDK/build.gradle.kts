@@ -10,6 +10,8 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import tech.antibytes.gradle.config.publishing.AwesomeCatsSDKConfiguration
 import tech.antibytes.gradle.configuration.sourcesets.setupAndroidTest
 import java.util.Properties
+import tech.antibytes.gradle.configuration.sourcesets.nativeCoroutine
+import tech.antibytes.gradle.configuration.apple.ensureAppleDeviceCompatibility
 
 plugins {
     alias(antibytesCatalog.plugins.gradle.antibytes.kmpConfiguration)
@@ -58,6 +60,10 @@ kotlin {
             }
         }
     }
+
+    macosX64()
+    macosArm64()
+    linuxX64()
 
     sourceSets {
         all {
@@ -145,6 +151,24 @@ kotlin {
             dependencies {
                 implementation(antibytesCatalog.js.test.kotlin.core)
             }
+        }
+
+        val nativeMain by creating {
+            dependencies {
+                implementation(antibytesCatalog.common.ktor.client.cio)
+            }
+        }
+
+        val macosX64Main by getting {
+            dependsOn(nativeMain)
+        }
+
+        val macosArm64Main by getting {
+            dependsOn(nativeMain)
+        }
+
+        val linuxX64Main by getting {
+            dependsOn(nativeMain)
         }
     }
 }

@@ -252,7 +252,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn11")
-    fun `Given a instance was create with a Environment, setHeaders was called with Headers and it was prepared and executed itsets the given headers to the request`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given a instance was create with a Environment setHeaders was called with Headers and it was prepared and executed itsets the given headers to the request`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val headers = mapOf<String, String>(
             fixture.pairFixture(ascii, ascii),
@@ -296,7 +296,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn13")
-    fun `Given a instance was create with a Environment, setParameter was called with parameter and it was prepared and executed itsets custom parameter to the request`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given a instance was create with a Environment setParameter was called with parameter and it was prepared and executed itsets custom parameter to the request`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val parameter = mapOf<String, String>(
             fixture.pairFixture(ascii, ascii),
@@ -339,7 +339,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn15")
-    fun `Given a Requests setBody is called with a Payload and it was prepared and executed with GET, it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given a Requests setBody is called with a Payload and it was prepared and executed with GET it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val client = KtorMockClientFactory.createSimpleMockClient(fixture.fixture(ascii))
 
@@ -358,7 +358,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn16")
-    fun `Given a Requests setBody is called with a Payload and it was prepared and executed with HEAD, it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given a Requests setBody is called with a Payload and it was prepared and executed with HEAD it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val client = KtorMockClientFactory.createSimpleMockClient(fixture.fixture())
 
@@ -377,7 +377,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn17")
-    fun `Given a Requests setBody was not called and it was prepared and executed with POST, it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given a Requests setBody was not called and it was prepared and executed with POST it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val client = KtorMockClientFactory.createSimpleMockClient(fixture.fixture(ascii))
 
@@ -396,7 +396,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn18")
-    fun `Given a Requests setBody was not called and it was prepared and executed with PUT, it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given a Requests setBody was not called and it was prepared and executed with PUT it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val client = KtorMockClientFactory.createSimpleMockClient(fixture.fixture(ascii))
 
@@ -415,7 +415,7 @@ class RequestBuilderSpec {
 
     @Test
     @JsName("fn19")
-    fun `Given Requests setBody was not called and it was prepared and executed with DELETE, it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
+    fun `Given Requests setBody was not called and it was prepared and executed with DELETE it fails`() = runBlockingTestInContext(GlobalScope.coroutineContext) {
         // Given
         val client = KtorMockClientFactory.createSimpleMockClient(fixture.fixture(ascii))
 
