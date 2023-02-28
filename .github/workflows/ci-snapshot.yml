@@ -13,16 +13,16 @@ concurrency:
 
 jobs:
   build:
-    uses: bitpogo/workflows/.github/workflows/shared-build-linux.yml@v1.0.0
+    uses: bitpogo/workflows/.github/workflows/shared-build-macos.yml@v1.0.0
     concurrency:
-      group: build-linux
+      group: build-macos
       cancel-in-progress: true
 
   check:
     needs: build
     uses: bitpogo/workflows/.github/workflows/shared-test-kmp.yml@v1.0.0
     with:
-      platforms: "['android', 'jvm', 'js']"
+      platforms: "['android', 'jvm', 'js', 'linux', 'macos']"
     concurrency:
       group: check
       cancel-in-progress: true
@@ -30,8 +30,6 @@ jobs:
   publish:
     needs: [ check ]
     uses: bitpogo/workflows/.github/workflows/shared-publish-snapshot.yml@v1.0.0
-    with:
-      use-linux-only: true
     secrets:
       upload-username: ${{ secrets.PACKAGE_REGISTRY_UPLOAD_USERNAME }}
       upload-token: ${{ secrets.PACKAGE_REGISTRY_UPLOAD_TOKEN }}
